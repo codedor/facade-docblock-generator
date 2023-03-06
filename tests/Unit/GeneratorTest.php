@@ -1,6 +1,6 @@
 <?php
 
-use App\Generator;
+use FacadeDocblockGenerator\Generator;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
@@ -26,9 +26,9 @@ beforeEach(function () {
 });
 
 afterEach(function () {
-    // if ($this->filesystem->exists($this->path)) {
-    //     $this->filesystem->deleteDirectory($this->path);
-    // }
+    if ($this->filesystem->exists($this->path)) {
+        $this->filesystem->deleteDirectory($this->path);
+    }
 });
 
 test('can execute', function () {

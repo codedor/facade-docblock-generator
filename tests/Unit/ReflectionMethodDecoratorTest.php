@@ -1,6 +1,6 @@
 <?php
 
-use App\ReflectionMethodDecorator;
+use FacadeDocblockGenerator\ReflectionMethodDecorator;
 
 beforeEach(function () {
     $this->sourceClass = new class {

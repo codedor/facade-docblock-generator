@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+use FacadeDocblockGenerator\Commands\DefaultCommand;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+if (file_exists(__DIR__.'/../vendor/autoload.php')) {
+    require __DIR__.'/../vendor/autoload.php';
+} else {
+    require __DIR__.'/../../../autoload.php';
+}
+
+$input = new ArgvInput();
+
+$output = new ConsoleOutput(ConsoleOutput::VERBOSITY_NORMAL, false);
+
+return (new DefaultCommand)->run($input, $output);

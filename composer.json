@@ -24,8 +24,6 @@
     "require": {
         "php": "^8.2",
         "illuminate/support": "^10.1",
-        "laravel-zero/framework": "^10.0",
-        "nunomaduro/termwind": "^1.15",
         "phpstan/phpdoc-parser": "^1.16"
     },
     "require-dev": {
@@ -46,15 +44,14 @@
         "illuminate/validation": "^10.1",
         "laravel/pint": "^1.5",
         "mockery/mockery": "^1.5.1",
+        "orchestra/testbench": "^8.0",
         "pestphp/pest": "^1.22.3",
         "spatie/pest-plugin-snapshots": "^1.1",
         "symfony/filesystem": "^6.2"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "FacadeDocblockGenerator\\": "src/"
         }
     },
     "autoload-dev": {
@@ -73,6 +70,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "bin": [
-        "builds/facade-docblock-generator"
+        "bin/facade-docblock-generator"
     ]
 }
