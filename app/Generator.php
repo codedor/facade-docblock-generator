@@ -5,7 +5,6 @@ namespace App;
 use ArrayAccess;
 use Illuminate\Cache\Repository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Conditionable;
 use PHPStan\PhpDocParser\Ast\Type\ArrayTypeNode;
@@ -81,7 +80,7 @@ class Generator
 
             // Fix: ensure we keep the references to the Carbon library on the Date Facade...
 
-            if ($facade->getName() === Date::class) {
+            if (Str::endsWith($facade->getName(), 'Date')) {
                 $methods->prepend(' *')
                         ->prepend(' * @see https://github.com/briannesbitt/Carbon/blob/master/src/Carbon/Factory.php')
                         ->prepend(' * @see https://carbon.nesbot.com/docs/');
@@ -95,20 +94,15 @@ class Generator
             $docblock = <<< PHP
             /**
             {$methods->join(PHP_EOL)}
-            *
+             *
             {$proxies->map(fn ($class) => " * @see {$class}")->merge($directMixins->map(fn ($class) => " * @mixin {$class}"))->join(PHP_EOL)}
-            */
+             */
             PHP;
+
+            $docblock = Str::replace("\n\n", "\n", $docblock);
 
             if (($facade->getDocComment() ?: '') === $docblock) {
                 return;
-            }
-
-            if ($this->isLinting) {
-                // echo "Did not find expected docblock for [{$facade->getName()}].".PHP_EOL.PHP_EOL;
-                // echo $docblock.PHP_EOL.PHP_EOL;
-                // echo 'Run the following command to update your docblocks locally:'.PHP_EOL.'php -f bin/facades.php';
-                exit(1);
             }
 
             // Update the facade docblock...
@@ -239,7 +233,7 @@ class Generator
 
         if ($typeNode instanceof IntersectionTypeNode) {
             return '('.collect($typeNode->types)
-                ->map(fn ($node) => resolveDocblockTypes($method, $node))
+                ->map(fn ($node) => $this->resolveDocblockTypes($method, $node))
                 ->unique()
                 ->implode('&').')';
         }
@@ -430,14 +424,14 @@ class Generator
     {
         if ($type instanceof ReflectionIntersectionType) {
             return collect($type->getTypes())
-                ->map(resolveType(...))
+                ->map($this->resolveType(...))
                 ->filter()
                 ->join('&');
         }
 
         if ($type instanceof ReflectionUnionType) {
             return collect($type->getTypes())
-                ->map(resolveType(...))
+                ->map($this->resolveType(...))
                 ->filter()
                 ->join('|');
         }

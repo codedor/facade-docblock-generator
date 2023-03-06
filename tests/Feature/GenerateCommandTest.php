@@ -1,18 +1,25 @@
 <?php
 
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 beforeEach(function () {
     $this->filesystem = app(Filesystem::class);
 
-    $this->path = __DIR__ . '/../Fixtures/Facades/Http.php';
+    $this->path = __DIR__ . '/../Fixtures/Facades';
 
-    if ($this->filesystem->exists(dirname($this->path))) {
-        $this->filesystem->deleteDirectory(dirname($this->path));
+    if ($this->filesystem->exists($this->path)) {
+        $this->filesystem->deleteDirectory($this->path);
     }
 
-    $this->filesystem->makeDirectory(dirname($this->path), 0777, true, true);
-    $this->filesystem->put($this->path, $this->filesystem->get(__DIR__ . '/../stubs/Facades/Http.stub'));
+    $this->filesystem->makeDirectory($this->path, 0777, true, true);
+
+    foreach ($this->filesystem->files(__DIR__ . '/../stubs/Facades') as $file) {
+        $this->filesystem->put(
+            $this->path . '/' . Str::replace('.stub', '.php', $file->getFilename()),
+            $this->filesystem->get($file->getPathname())
+        );
+    }
 });
 
 afterEach(function () {

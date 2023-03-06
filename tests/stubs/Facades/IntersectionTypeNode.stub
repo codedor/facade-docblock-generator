@@ -1,0 +1,19 @@
+<?php
+
+namespace Tests\Fixtures\Facades;
+
+/**
+ * @see \Tests\Fixtures\Classes\IntersectionMethod
+ */
+class IntersectionTypeNode extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
+    protected static function getFacadeAccessor()
+    {
+        return 'intersection-type-node';
+    }
+}

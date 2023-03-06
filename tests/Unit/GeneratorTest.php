@@ -2,6 +2,7 @@
 
 use App\Generator;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 beforeEach(function () {
     $this->filesystem = app(Filesystem::class);
@@ -15,23 +16,26 @@ beforeEach(function () {
     $this->filesystem->makeDirectory($this->path, 0777, true, true);
 
     foreach ($this->filesystem->files(__DIR__ . '/../stubs/Facades') as $file) {
-        $file->filename();
-        $this->filesystem->put($this->path, $this->filesystem->get(__DIR__ . '/../stubs/Facades/Http.stub'));
+        $this->filesystem->put(
+            $this->path . '/' . Str::replace('.stub', '.php', $file->getFilename()),
+            $this->filesystem->get($file->getPathname())
+        );
     }
-
 
     $this->generator = new Generator("Tests\\Fixtures\\Facades", 'tests/Fixtures/Facades', false);
 });
 
 afterEach(function () {
-    if ($this->filesystem->exists(dirname($this->path))) {
-        $this->filesystem->deleteDirectory(dirname($this->path));
-    }
+    // if ($this->filesystem->exists($this->path)) {
+    //     $this->filesystem->deleteDirectory($this->path);
+    // }
 });
 
 test('can execute', function () {
     $this->generator->execute();
 
-    expect($this->filesystem->get($this->path))
-        ->toBe($this->filesystem->get(__DIR__ . '/../__snapshots__/HttpSnapshot'));
+    expect($this->filesystem->files($this->path))
+        ->each(fn ($file) => $file
+            ->toHasFileSnapshot()
+        );
 });

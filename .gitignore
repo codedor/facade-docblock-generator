@@ -3,4 +3,6 @@
 /.vscode
 /.vagrant
 .phpunit.result.cache
-/tests/Snapshots/
+/tests/Fixtures/**/*.php
+.DS_Store
+/coverage

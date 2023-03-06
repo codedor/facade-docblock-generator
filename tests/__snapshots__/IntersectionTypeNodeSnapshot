@@ -1,0 +1,21 @@
+<?php
+
+namespace Tests\Fixtures\Facades;
+
+/**
+ * @method static void foo(\Countable&\Stringable|\Traversable $val)
+ *
+ * @see \Tests\Fixtures\Classes\IntersectionMethod
+ */
+class IntersectionTypeNode extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
+    protected static function getFacadeAccessor()
+    {
+        return 'intersection-type-node';
+    }
+}

@@ -1,0 +1,14 @@
+<?php
+
+namespace Tests\Fixtures\Facades;
+
+/**
+ *
+ */
+class WithEmptyDocBlock extends Facade
+{
+    protected static function getFacadeAccessor()
+    {
+        return 'with-empty-doc-block';
+    }
+}

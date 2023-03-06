@@ -1,6 +1,6 @@
 {
-    "name": "laravel-zero/laravel-zero",
-    "description": "The Laravel Zero Framework.",
+    "name": "codedor/facade-docblock-generator",
+    "description": "Generate docblocks for your facade",
     "keywords": [
         "framework",
         "laravel",
@@ -22,14 +22,28 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "illuminate/support": "^10.1",
         "laravel-zero/framework": "^10.0",
         "nunomaduro/termwind": "^1.15",
         "phpstan/phpdoc-parser": "^1.16"
     },
     "require-dev": {
+        "ably/ably-php": "^1.1",
+        "doctrine/dbal": "^3.6",
+        "illuminate/auth": "^10.1",
+        "illuminate/broadcasting": "^10.1",
+        "illuminate/cookie": "^10.1",
+        "illuminate/encryption": "^10.1",
+        "illuminate/hashing": "^10.1",
         "illuminate/http": "^10.1",
+        "illuminate/log": "^10.1",
+        "illuminate/mail": "^10.1",
+        "illuminate/notifications": "^10.2",
+        "illuminate/redis": "^10.1",
+        "illuminate/routing": "^10.1",
+        "illuminate/translation": "^10.1",
+        "illuminate/validation": "^10.1",
         "laravel/pint": "^1.5",
         "mockery/mockery": "^1.5.1",
         "pestphp/pest": "^1.22.3",
@@ -56,7 +70,7 @@
             "pestphp/pest-plugin": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "bin": [
         "application"

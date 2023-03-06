@@ -3,7 +3,6 @@
 namespace Tests\Fixtures\Facades;
 
 use Illuminate\Http\Client\Factory;
-use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static void response(array|string|null $body = null, int $status = 200, array $headers = [])
@@ -80,9 +79,9 @@ use Illuminate\Support\Facades\Facade;
  * @method static array getOptions()
  * @method static \Illuminate\Http\Client\PendingRequest|mixed when(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
  * @method static \Illuminate\Http\Client\PendingRequest|mixed unless(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
-*
- * @see Illuminate\Http\Client\Factory
-*/
+ *
+ * @see \Illuminate\Http\Client\Factory
+ */
 class Http extends Facade
 {
     /**

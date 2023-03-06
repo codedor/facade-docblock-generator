@@ -3,10 +3,9 @@
 namespace Tests\Fixtures\Facades;
 
 use Illuminate\Http\Client\Factory;
-use Illuminate\Support\Facades\Facade;
 
 /**
- * @see Illuminate\Http\Client\Factory
+ * @see \Illuminate\Http\Client\Factory
  */
 class Http extends Facade
 {
