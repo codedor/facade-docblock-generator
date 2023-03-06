@@ -73,6 +73,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "bin": [
-        "application"
+        "builds/facade-docblock-generator"
     ]
 }
