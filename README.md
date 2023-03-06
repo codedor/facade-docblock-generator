@@ -1,6 +1,7 @@
 # Facade Docblocks Generator
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Facade Docblock Generator is a package that will help you with generating the docblocks for your facades.
+Based on the work of [Tim MacDonald](https://github.com/timacdonald) in the [Laravel Framework repository](https://github.com/laravel/framework/blob/10.x/bin/facades.php).
 
 ## Installation
 
