@@ -6,3 +6,4 @@
 /tests/Fixtures/Facades/*.php
 .DS_Store
 /coverage
+composer.lock
