@@ -2,23 +2,23 @@
     "name": "codedor/facade-docblock-generator",
     "description": "Generate docblocks for your facade",
     "keywords": [
-        "framework",
+        "package",
         "laravel",
-        "laravel zero",
-        "console",
-        "cli"
+        "facade",
+        "docblock",
+        "generator"
     ],
-    "homepage": "https://laravel-zero.com",
-    "type": "project",
+    "homepage": "https://github.com/codedor/facade-docblock-generator",
+    "type": "package",
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/laravel-zero/laravel-zero/issues",
-        "source": "https://github.com/laravel-zero/laravel-zero"
+        "issues": "https://github.com/codedor/facade-docblock-generator/issues",
+        "source": "https://github.com/codedor/facade-docblock-generator"
     },
     "authors": [
         {
-            "name": "Nuno Maduro",
-            "email": "enunomaduro@gmail.com"
+            "name": "Jyrki De Neve",
+            "email": "jyrki.deneve@codedor.be"
         }
     ],
     "require": {

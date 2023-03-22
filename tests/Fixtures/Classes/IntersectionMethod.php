@@ -8,7 +8,7 @@ use Traversable;
 
 class IntersectionMethod
 {
-    public function foo((Countable & Stringable) | Traversable $val)
+    public function foo((Countable&Stringable) | Traversable $val)
     {
         return $val;
     }

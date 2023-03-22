@@ -3,7 +3,8 @@
 use FacadeDocblockGenerator\ReflectionMethodDecorator;
 
 beforeEach(function () {
-    $this->sourceClass = new class {
+    $this->sourceClass = new class
+    {
         public function foo($msg)
         {
             echo $msg;

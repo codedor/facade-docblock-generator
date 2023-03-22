@@ -40,7 +40,7 @@ class Generator
     public function execute()
     {
         $finder = (new Finder)
-            ->in(getcwd() . DIRECTORY_SEPARATOR . $this->directory)
+            ->in(getcwd().DIRECTORY_SEPARATOR.$this->directory)
             ->files()
             ->notName('Facade.php');
 
@@ -108,7 +108,7 @@ class Generator
             // Update the facade docblock...
 
             // echo "Updating docblock for [{$facade->getName()}].".PHP_EOL;
-            $facadeFile = getcwd() . DIRECTORY_SEPARATOR . $this->directory . DIRECTORY_SEPARATOR . basename($facade->getFileName());
+            $facadeFile = getcwd().DIRECTORY_SEPARATOR.$this->directory.DIRECTORY_SEPARATOR.basename($facade->getFileName());
             $contents = file_get_contents($facadeFile);
             $contents = Str::replace($facade->getDocComment(), $docblock, $contents);
 
@@ -126,7 +126,7 @@ class Generator
     {
         return collect($finder)
             ->map(fn ($file) => $file->getBaseName('.php'))
-            ->map(fn ($name) => Str::replace("\\\\", "\\", "\\{$this->namespace}\\{$name}"))
+            ->map(fn ($name) => Str::replace('\\\\', '\\', "\\{$this->namespace}\\{$name}"))
             ->map(fn ($class) => new ReflectionClass($class));
     }
 
